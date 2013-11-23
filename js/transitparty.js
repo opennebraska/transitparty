@@ -3,9 +3,38 @@
   var hexLayer;
   var baseLayer;
   var map;
+  var mapmargin = 50;
+
+  function resize(){
+    var selector = $('#legend');
+    var mapWidth = $(document).width();
+
+    selector.each(function(i, elt){
+        var $elt = $(elt);
+        if ($elt.is(":visible"))
+        {
+            mapWidth -= $elt.outerWidth(true);
+        }
+
+    });
+    mapWidth -= 50;
+    $('#map').width(mapWidth);
+    $('#map').height($(document).height());
+  }
+
 
   function colorize(duration) {
-    return '#000';
+    if(duration > 120) {
+      return '#980043';
+    } else if (duration > 60) {
+      return '#DD1C77';
+    } else if (duration > 30) {
+      return '#DF65B0';
+    } else if (duration > 6) {
+      return '#D7B5D8';
+    } else {
+      return '#F1EEF6';
+    }
   }
 
   function loadHexes() {
@@ -64,10 +93,14 @@
     loadHexes();
   }
 
+  
+
   return {
 
     init : function() {
       initializeMap();
+      $(window).on("resize", resize);
+      resize();
     }
 
   }

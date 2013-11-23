@@ -1,22 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transit Party</title>
-    <link rel="stylesheet" href="styles/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/foundation.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="scripts/leaflet-src.js"></script>
-    <script src="scripts/topojson.js"></script>
-    <script src="scripts/lodash.min.js"></script>
-    <script src="scripts/transitparty.js"></script>
+    <script src="js/leaflet-src.js"></script>
+    <script src="js/topojson.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/transitparty.js"></script>
+    <script src="js/modernizr.js"></script>
     <!--[if IE]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-</head>
-
-<body id="home">
-    <div id="map" style="width: 600px; height: 400px">
-
-    </div>
-</body>
+  </head>
+  <body>
+    
+    
+    
+    
+      <div class="large-3 columns" style="background-color:#008cba;" id="legend">
+      <img style="display:block; margin: 0 auto;" src="http://img834.imageshack.us/img834/3804/3lsm.png">
+      	<img style="display:block; margin: 0 auto; margin-top: -30px;" src="http://img5.imageshack.us/img5/1861/pj2s.png">
+<!LOCATION!>    		
+      		<div class="row">
+				      <input type="text" placeholder="Your Location"/>
+				
+      		</div>
+      		<div id="text" style="color:white;font-size: 10px;">
+	      		<p class="spacetimes" style=""> Are you down with OTP? Here is a bunch of text that explains what this is, how attractive we are, and why we should win all the gold.</p>
+<!SOURCES!>
+	      		<img style="display:block; margin: 0 auto;" src="http://img440.imageshack.us/img440/921/3o09.png">
+	      			<p style="font-size: 10px; text-align: center;">Street data courtesy of  © OpenStreetMap contributors, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>,Transit data courtesy of <a href="http://www.ometro.com/"> Omaha Metro </a></p>
+      		</div>
+      </div>
+      <div class="large-9 columns" style="background-color: white;" id="map">
+      	<!--<p> this is far right 8 columns </p>-->
+      </div>
+      
+      
+      
+      
+    
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>
