@@ -4,6 +4,10 @@
   var baseLayer;
   var map;
 
+  function colorize(duration) {
+    return '#000';
+  }
+
   function loadHexes() {
     $.getJSON('data/metro.topojson', function(data){
       layer = L.geoJson(topojson.feature(data, data.objects['metro']),{
@@ -22,6 +26,22 @@
 
   function setPoly(polyId) {
     console.log(polyId);
+    $.getJSON('data/json/' + polyId + '.json?' + Math.random(), function(data){
+      _.each(layer._layers, function(hex){
+        var polyId = hex.feature.properties.pid;
+        if (_.has(data, polyId)) {
+          hex.setStyle({
+            fill: true,
+            fillColor: colorize(data[polyId]),
+            fillOpacity: 1
+          });
+        } else {
+          hex.setStyle({
+            fillOpacity: 0
+          });
+        }           
+      }) 
+    });
   }
 
   function onPolyClick(e) {
