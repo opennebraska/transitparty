@@ -2,7 +2,7 @@
 
   var hexLayer;
   var baseLayer;
-  //var map;
+  var map;
 
   function loadHexes() {
     $.getJSON('data/metro.topojson', function(data){
@@ -13,12 +13,19 @@
             stroke: false
         },
         onEachFeature: function (feature, layer) {
-            feature.properties.pid = whichFeature;
-            layer.on('click', clickHandler);
-            whichFeature++;
+            layer.on('click', onPolyClick);
         }
       });
+      layer.addTo(map);
     });
+  }
+
+  function setPoly(polyId) {
+    console.log(polyId);
+  }
+
+  function onPolyClick(e) {
+    setPoly(e.target.feature.properties.pid);
   }
 
   function initializeMap() {
@@ -45,7 +52,7 @@
 
   }
 
-})(L, $);
+})(L, $, topojson);
 
 $(document).ready(function () {
   TransitParty.init();
