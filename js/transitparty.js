@@ -99,10 +99,11 @@
 
   function initializeMap() {
     map = new L.map('map',{
-        center: new L.LatLng(41.238883, -96.089233),
-        zoom: 12,
-        attributionControl: false,
-        scrollWheelZoom: false
+      center: new L.LatLng(41.263305, -96.038481),
+      zoom: 12,
+      attributionControl: false,
+      scrollWheelZoom: false,
+      dragging: false
     });
 
     baseLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
