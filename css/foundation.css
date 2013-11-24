@@ -64,6 +64,9 @@ a:hover {
 	margin-top: -15px;	
 	margin-left: -25px;
 	}
+	
+	
+}
 
 img,
 object,
@@ -131,11 +134,11 @@ select {
 
 .row {
   width: 100%;
-  margin-left: auto;
+  /*margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 62.5rem;
+  max-width: 62.5rem;*/
   *zoom: 1; }
   .row:before, .row:after {
     content: " ";
@@ -3845,7 +3848,7 @@ blockquote p {
 @media only screen and (min-width: 40.063em) {
 
 .spacetimes{
-	margin-bottom: 190px;
+	margin-bottom: 200px;
 }
 
 .locationthingie{
@@ -3864,6 +3867,12 @@ blockquote p {
 	margin-top: -15px;	
 	margin-left: -25px;
 	}
+	
+	
+}
+
+
+
 
   .joyride-tip-guide {
     width: 300px;
@@ -4141,7 +4150,7 @@ ul.off-canvas-list {
   max-height: none;
   height: auto;
   background: white;
-  border: solid 1px #cccccc;
+  
   font-size: 16px;
   z-index: 99;
   margin-top: 2px;
@@ -4183,10 +4192,11 @@ ul.off-canvas-list {
   .f-dropdown li {
     font-size: 0.875rem;
     cursor: pointer;
+    background-color: #0c7aa4;
     line-height: 1.125rem;
     margin: 0; }
     .f-dropdown li:hover, .f-dropdown li:focus {
-      background: #eeeeee; }
+      }
     .f-dropdown li a {
       display: block;
       padding: 0.5rem;
