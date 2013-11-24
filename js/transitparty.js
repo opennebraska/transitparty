@@ -5,6 +5,7 @@
   var map;
   var selectedMarker = false;
   var mapmargin = 50;
+  var geocoder;
 
   function resize(){
     map.invalidateSize(false);
@@ -36,11 +37,11 @@
 
   function geocode(){
     var address = $('#searchBox').val();
-
-    geocoder.geocode( { 'address': address}, function(results, status) {
+    var location = new google.maps.LatLng(41.263305, -96.038481);
+    geocoder.geocode( { 'address': address, 'location': location}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        var lat = results[0].location.lat();
-        var lon = results[0].location.lng();
+        var lat = results[0].geometry.location.lat();
+        var lon = results[0].geometry.location.lng();
         var whichHex = leafletPip.pointInLayer([lon, lat],  hexLayer, true);
         if (whichHex.length == 0)
         {
@@ -48,7 +49,7 @@
         } 
         setPoly(whichHex[0].feature.properties.pid);
       } else {
-        alert('Oops! We couldn't find that place.');
+        alert('Oops! We couldn\'t find that place.');
       }
     });
   }
@@ -126,6 +127,8 @@
     }).addTo(map);
 
     loadHexes();
+
+    geocoder = new google.maps.Geocoder();
 
     $('#searchBox').keydown(function(event){
       if(event.which == 13)
