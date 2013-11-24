@@ -63,7 +63,7 @@
           hex.setStyle({
             fill: true,
             fillColor: colorize(data[polyId]),
-            fillOpacity: 1
+            fillOpacity: 0.7
           });
         } else {
           hex.setStyle({
@@ -81,7 +81,7 @@
   function initializeMap() {
     map = new L.map('map',{
         center: new L.LatLng(41.238883, -96.089233),
-        zoom: 11,
+        zoom: 12,
         attributionControl: false,
         scrollWheelZoom: false
     });
