@@ -47,6 +47,24 @@ a:hover {
 .spacetimes{
 	margin-bottom: 0px;
 }
+
+.locationthingie{
+	content: url('http://img546.imageshack.us/img546/3416/0nvc.png');
+	max-width: 50px;
+	height: 50px;
+	margin-top: -15px;
+	margin-left: -25px;
+	}
+	
+	
+.locationthingie:hover{
+	content: url('http://img824.imageshack.us/img824/471/ejjp.png');
+	max-width: 50px;
+	height: 50px;
+	margin-top: -15px;	
+	margin-left: -25px;
+	}
+
 img,
 object,
 embed {
@@ -3829,6 +3847,23 @@ blockquote p {
 .spacetimes{
 	margin-bottom: 190px;
 }
+
+.locationthingie{
+	content: url('http://img546.imageshack.us/img546/3416/0nvc.png');
+	max-width: 50px;
+	height: 50px;
+	margin-top: -15px;
+	margin-left: -25px;
+	}
+	
+	
+.locationthingie:hover{
+	content: url('http://img824.imageshack.us/img824/471/ejjp.png');
+	max-width: 50px;
+	height: 50px;
+	margin-top: -15px;	
+	margin-left: -25px;
+	}
 
   .joyride-tip-guide {
     width: 300px;
