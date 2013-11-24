@@ -48,7 +48,6 @@
       var lon = data[0].lon;
 
       var whichHex = leafletPip.pointInLayer([lon, lat],  hexLayer, true);
-      map.panTo([lat, lon]);
       if (whichHex.length == 0)
       {
         return;
@@ -74,7 +73,6 @@
   }
 
   function setPoly(polyId) {
-    console.log(polyId);
     $.getJSON('data/json/' + polyId + '.json?' + Math.random(), function(data){
       _.each(hexLayer._layers, function(hex){
         var polyId = hex.feature.properties.pid;
@@ -95,6 +93,18 @@
 
   function onPolyClick(e) {
     setPoly(e.target.feature.properties.pid);
+  }
+
+  function geolocate(e) {
+    var lat = e.coords.latitude;
+    var long = e.coords.longitude;
+
+    var whichHex = leafletPip.pointInLayer([long, lat],  hexLayer, true);
+    if (whichHex.length == 0)
+    {
+      return;
+    }
+    setPoly(whichHex[0].feature.properties.pid);
   }
 
   function initializeMap() {
@@ -119,6 +129,10 @@
         // Enter key
         geocode();
       }
+    });
+
+    $('#geolocate').click(function(e) {
+      navigator.geolocation.getCurrentPosition(geolocate);
     });
   }
 
