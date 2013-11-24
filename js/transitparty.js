@@ -3,6 +3,7 @@
   var hexLayer;
   var baseLayer;
   var map;
+  var selectedMarker = false;
   var mapmargin = 50;
 
   function resize(){
@@ -72,8 +73,11 @@
     });
   }
 
-  function setPoly(polyId) {
-    $.getJSON('data/json/' + polyId + '.json?' + Math.random(), function(data){
+  function setPoly(selectedPoly) {
+    if(selectedMarker) {
+      map.removeLayer(selectedMarker);
+    }
+    $.getJSON('data/json/' + selectedPoly + '.json?' + Math.random(), function(data){
       _.each(hexLayer._layers, function(hex){
         var polyId = hex.feature.properties.pid;
         if (_.has(data, polyId)) {
@@ -86,7 +90,11 @@
           hex.setStyle({
             fillOpacity: 0
           });
-        }           
+        }
+        if(selectedPoly == polyId) {
+          var center = hex.getBounds().getCenter();
+          selectedMarker = L.marker(center).addTo(map);
+        } 
       }) 
     });
   }
