@@ -26,15 +26,25 @@
 
   function colorize(duration) {
     if(duration > 120) {
-      return '#980043';
+      return '#7F81BD';
+    } else if (duration > 90) {
+      return '#8083F7';
+    } else if (duration > 75) {
+      return '#81A8FC';
     } else if (duration > 60) {
-      return '#DD1C77';
+      return '#83D9FD';
+    } else if (duration > 50) {
+      return '#98FEE6';
+    } else if (duration > 40) {
+      return '#B6F2AE';
     } else if (duration > 30) {
-      return '#DF65B0';
-    } else if (duration > 6) {
-      return '#D7B5D8';
+      return '#DCF288';
+    } else if (duration > 20) {
+      return '#FEE085';
+    } else if (duration > 15) {
+      return '#FDB383';
     } else {
-      return '#F1EEF6';
+      return '#F68481';
     }
   }
 
