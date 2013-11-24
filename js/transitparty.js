@@ -6,7 +6,7 @@
   var mapmargin = 50;
 
   function resize(){
-    var selector = $('#legend');
+/*    var selector = $('#legend');
     var mapWidth = $(document).width();
 
     selector.each(function(i, elt){
@@ -19,7 +19,8 @@
     });
     mapWidth -= 50;
     $('#map').width(mapWidth);
-    $('#map').height($(document).height());
+    $('#map').height($(document).height()); */
+    map.invalidateSize(false);
   }
 
 
