@@ -36,24 +36,20 @@
 
   function geocode(){
     var address = $('#searchBox').val();
-    address += ', omaha ne';
-    var url = 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=?&limit=1&location=Omaha, NE&q=' + address;
-    url = encodeURI(url);
 
-    $.getJSON(url, function(data){
-      if (!_.has(data,0)){
-        return;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var lat = results[0].location.lat();
+        var lon = results[0].location.lng();
+        var whichHex = leafletPip.pointInLayer([lon, lat],  hexLayer, true);
+        if (whichHex.length == 0)
+        {
+          return;
+        } 
+        setPoly(whichHex[0].feature.properties.pid);
+      } else {
+        alert('Oops! We couldn't find that place.');
       }
-
-      var lat = data[0].lat;
-      var lon = data[0].lon;
-
-      var whichHex = leafletPip.pointInLayer([lon, lat],  hexLayer, true);
-      if (whichHex.length == 0)
-      {
-        return;
-      }
-      setPoly(whichHex[0].feature.properties.pid);
     });
   }
 
