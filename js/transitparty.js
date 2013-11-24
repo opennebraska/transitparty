@@ -6,23 +6,8 @@
   var mapmargin = 50;
 
   function resize(){
-/*    var selector = $('#legend');
-    var mapWidth = $(document).width();
-
-    selector.each(function(i, elt){
-        var $elt = $(elt);
-        if ($elt.is(":visible"))
-        {
-            mapWidth -= $elt.outerWidth(true);
-        }
-
-    });
-    mapWidth -= 50;
-    $('#map').width(mapWidth);
-    $('#map').height($(document).height()); */
     map.invalidateSize(false);
   }
-
 
   function colorize(duration) {
     if(duration > 120) {
@@ -48,9 +33,33 @@
     }
   }
 
+  function geocode(){
+    var address = $('#searchBox').val();
+    address += ', omaha ne';
+    var url = 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=?&limit=1&location=Omaha, NE&q=' + address;
+    url = encodeURI(url);
+
+    $.getJSON(url, function(data){
+      if (!_.has(data,0)){
+        return;
+      }
+
+      var lat = data[0].lat;
+      var lon = data[0].lon;
+
+      var whichHex = leafletPip.pointInLayer([lon, lat],  hexLayer, true);
+      map.panTo([lat, lon]);
+      if (whichHex.length == 0)
+      {
+        return;
+      }
+      setPoly(whichHex[0].feature.properties.pid);
+    });
+  }
+
   function loadHexes() {
     $.getJSON('data/metro.topojson', function(data){
-      layer = L.geoJson(topojson.feature(data, data.objects['metro']),{
+      hexLayer = L.geoJson(topojson.feature(data, data.objects['metro']),{
         style: {
             fill: true,
             fillOpacity: 0,
@@ -60,14 +69,14 @@
             layer.on('click', onPolyClick);
         }
       });
-      layer.addTo(map);
+      hexLayer.addTo(map);
     });
   }
 
   function setPoly(polyId) {
     console.log(polyId);
     $.getJSON('data/json/' + polyId + '.json?' + Math.random(), function(data){
-      _.each(layer._layers, function(hex){
+      _.each(hexLayer._layers, function(hex){
         var polyId = hex.feature.properties.pid;
         if (_.has(data, polyId)) {
           hex.setStyle({
@@ -102,9 +111,15 @@
     }).addTo(map);
 
     loadHexes();
-  }
 
-  
+    $('#searchBox').keydown(function(event){
+      if(event.which == 13)
+      {
+        // Enter key
+        geocode();
+      }
+    });
+  }
 
   return {
 
