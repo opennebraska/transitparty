@@ -49,7 +49,7 @@ a:hover {
 }
 
 .locationthingie{
-	content: url('http://img546.imageshack.us/img546/3416/0nvc.png');
+	content: url('../img/location1.png');
 	max-width: 50px;
 	height: 50px;
 	margin-top: -15px;
@@ -58,7 +58,7 @@ a:hover {
 	
 	
 .locationthingie:hover{
-	content: url('http://img824.imageshack.us/img824/471/ejjp.png');
+	content: url('../img/location2.png');
 	max-width: 50px;
 	height: 50px;
 	margin-top: -15px;	
@@ -3852,7 +3852,7 @@ blockquote p {
 }
 
 .locationthingie{
-	content: url('http://img546.imageshack.us/img546/3416/0nvc.png');
+	content: url('../img/location1.png');
 	max-width: 50px;
 	height: 50px;
 	margin-top: -15px;
@@ -3861,7 +3861,7 @@ blockquote p {
 	
 	
 .locationthingie:hover{
-	content: url('http://img824.imageshack.us/img824/471/ejjp.png');
+	content: url('../img/location2.png');
 	max-width: 50px;
 	height: 50px;
 	margin-top: -15px;	
